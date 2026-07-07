@@ -816,12 +816,17 @@ footer p { font-size: 0.78rem; color: var(--muted2); }
       </div>
     </div>
     <div class="form-card">
-      <!-- ACTION: Replace YOUR_FORMSPREE_ID below. Steps:
-           1. Go to https://formspree.io and sign up free
-           2. Create a new form → copy the ID (looks like "xpwzabcd")
-           3. Replace YOUR_FORMSPREE_ID with your ID -->
-      <form id="leadForm" action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST" novalidate>
+      <!-- Form backend: FormSubmit (formsubmit.co) — no signup needed.
+           NOTE: The first real submission sends a one-time activation email
+           to alabihenrytaiwo@gmail.com. Click the confirmation link once,
+           and every submission after that is delivered to your inbox.
+           Calendly redirect: set in the CALENDLY_URL constant in the script below. -->
+      <form id="leadForm" action="https://formsubmit.co/ajax/alabihenrytaiwo@gmail.com" method="POST" novalidate>
         <input type="hidden" name="_subject" value="New strategy call booking — Alabi Agency" />
+        <input type="hidden" name="_template" value="table" />
+        <input type="hidden" name="_captcha" value="false" />
+        <!-- Honeypot spam trap: hidden from humans, bots fill it and get rejected -->
+        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true" />
         <div class="field">
           <label for="businessName">Business name</label>
           <input type="text" id="businessName" name="businessName" required placeholder="e.g. Acme Corp" autocomplete="organization"/>
@@ -885,45 +890,42 @@ footer p { font-size: 0.78rem; color: var(--muted2); }
   });
 
   // Lead form — submits to Formspree, falls back to console if ID not set
+  // Replace with your real Calendly link when ready
+  const CALENDLY_URL = 'https://calendly.com/YOUR_USERNAME/free-consultation';
+
   document.getElementById('leadForm').addEventListener('submit', async function(e) {
     e.preventDefault();
     const form = this;
     const status = document.getElementById('formStatus');
     const btn = form.querySelector('.submit-btn');
-    const action = form.getAttribute('action');
 
     btn.disabled = true;
     btn.textContent = 'Sending…';
     status.textContent = '';
     status.className = 'form-status';
 
-    if (action.includes('YOUR_FORMSPREE_ID')) {
-      // Dev fallback — log to console until Formspree is wired up
-      console.log('Form data:', Object.fromEntries(new FormData(form)));
-      status.textContent = "Thanks — we'll be in touch within 24 hours to schedule your call.";
-      status.classList.add('success');
-      form.reset();
-      btn.disabled = false;
-      btn.textContent = 'Book a Strategy Call →';
-      return;
-    }
-
     try {
-      const res = await fetch(action, {
+      const res = await fetch(form.getAttribute('action'), {
         method: 'POST',
         body: new FormData(form),
         headers: { 'Accept': 'application/json' }
       });
       if (res.ok) {
-        status.textContent = "Thanks — we'll be in touch within 24 hours to schedule your call.";
+        // Prefill Calendly with the visitor's details before resetting the form
+        const params = new URLSearchParams({
+          name: document.getElementById('businessName').value,
+          email: document.getElementById('email').value
+        });
+        status.textContent = "Thanks — taking you to our calendar to pick a time…";
         status.classList.add('success');
         form.reset();
-      } else {
-        status.textContent = "Something went wrong. Please email us directly.";
-        status.style.color = '#f87171';
+        setTimeout(() => { window.location.href = CALENDLY_URL + '?' + params.toString(); }, 1200);
+        return;
       }
+      status.textContent = 'Something went wrong. Please email us directly at alabihenrytaiwo@gmail.com.';
+      status.style.color = '#f87171';
     } catch {
-      status.textContent = "Something went wrong. Please try again.";
+      status.textContent = 'Something went wrong. Please try again.';
       status.style.color = '#f87171';
     }
     btn.disabled = false;
