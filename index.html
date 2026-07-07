@@ -818,10 +818,10 @@ footer p { font-size: 0.78rem; color: var(--muted2); }
     <div class="form-card">
       <!-- Form backend: FormSubmit (formsubmit.co) — no signup needed.
            NOTE: The first real submission sends a one-time activation email
-           to alabihenrytaiwo@gmail.com. Click the confirmation link once,
+           to alabiagency.dev@gmail.com. Click the confirmation link once,
            and every submission after that is delivered to your inbox.
            Calendly redirect: set in the CALENDLY_URL constant in the script below. -->
-      <form id="leadForm" action="https://formsubmit.co/ajax/alabihenrytaiwo@gmail.com" method="POST" novalidate>
+      <form id="leadForm" action="https://formsubmit.co/ajax/alabiagency.dev@gmail.com" method="POST" novalidate>
         <input type="hidden" name="_subject" value="New strategy call booking — Alabi Agency" />
         <input type="hidden" name="_template" value="table" />
         <input type="hidden" name="_captcha" value="false" />
@@ -922,7 +922,7 @@ footer p { font-size: 0.78rem; color: var(--muted2); }
         setTimeout(() => { window.location.href = CALENDLY_URL + '?' + params.toString(); }, 1200);
         return;
       }
-      status.textContent = 'Something went wrong. Please email us directly at alabihenrytaiwo@gmail.com.';
+      status.textContent = 'Something went wrong. Please email us directly at alabiagency.dev@gmail.com.';
       status.style.color = '#f87171';
     } catch {
       status.textContent = 'Something went wrong. Please try again.';
