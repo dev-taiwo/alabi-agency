@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Alabi Agency — Paid Ads for Home Services</title>
+<title>Alabi Agency — Expert Paid Traffic Strategies</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -505,7 +505,10 @@ footer p { font-size: 0.78rem; color: var(--muted2); }
 
 <!-- NAV -->
 <nav>
-  <div class="logo">Alabi<span>.</span></div>
+  <div class="logo">
+    <!-- LOGO: Replace the line below with <img src="your-logo.png" alt="Alabi Agency" style="height:36px;"> when you have a logo file -->
+    Alabi<span>.</span>
+  </div>
   <div class="nav-right">
     <span class="nav-link" onclick="document.getElementById('process').scrollIntoView({behavior:'smooth'})">How it Works</span>
     <span class="nav-link" onclick="document.getElementById('industries').scrollIntoView({behavior:'smooth'})">Industries</span>
@@ -523,10 +526,10 @@ footer p { font-size: 0.78rem; color: var(--muted2); }
   <div class="hero-content">
     <div class="eyebrow">
       <span class="eyebrow-dot"></span>
-      Paid Ads for Home Services
+      Expert Paid Traffic Strategies
     </div>
-    <h1>We turn <span class="accent">clicks</span><br>into <span class="accent">customers</span>.</h1>
-    <p class="hero-sub">Alabi Agency runs Meta and Google ad campaigns built specifically for roofing, HVAC, and plumbing companies — so you get qualified leads, not just impressions.</p>
+    <h1>We turn <span class="accent">ad spend</span><br>into <span class="accent">revenue</span>.</h1>
+    <p class="hero-sub">Alabi Agency builds and manages high-performance Meta and Google campaigns that drive real pipeline — qualified leads, booked calls, and closed deals.</p>
     <div class="hero-ctas">
       <button class="btn btn-primary btn-lg" onclick="document.getElementById('book').scrollIntoView({behavior:'smooth'})">Book a Strategy Call</button>
       <button class="btn btn-outline btn-lg" onclick="document.getElementById('process').scrollIntoView({behavior:'smooth'})">See How It Works</button>
@@ -539,7 +542,7 @@ footer p { font-size: 0.78rem; color: var(--muted2); }
       <div class="trust-sep"></div>
       <div class="trust-badge">
         <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-        Home Services Specialists
+        Meta &amp; Google Specialists
       </div>
       <div class="trust-sep"></div>
       <div class="trust-badge">
@@ -576,7 +579,7 @@ footer p { font-size: 0.78rem; color: var(--muted2); }
 <section class="section section-center" id="process">
   <div class="section-label">How We Work</div>
   <h2>Three steps to unstoppable growth</h2>
-  <p class="section-desc">A proven system built for home service companies that need consistent, qualified leads — not vanity metrics.</p>
+  <p class="section-desc">A proven system for businesses that need consistent, qualified leads — not vanity metrics.</p>
   <div class="process-grid">
 
     <div class="process-card">
@@ -638,7 +641,7 @@ footer p { font-size: 0.78rem; color: var(--muted2); }
 <section class="section section-center" id="industries">
   <div class="section-label">Who We Work With</div>
   <h2>Industries We Serve</h2>
-  <p class="section-desc">We go deep, not wide. Every template, funnel, and targeting strategy is built around how homeowners actually search.</p>
+  <p class="section-desc">We work across industries where lead quality and cost-per-acquisition matter most. No cookie-cutter campaigns — every strategy is built around your buyers.</p>
   <div class="industries-grid">
 
     <div class="industry-card">
@@ -712,7 +715,7 @@ footer p { font-size: 0.78rem; color: var(--muted2); }
       </div>
       <div class="result-card">
         <div class="result-num">$18</div>
-        <div class="result-desc">Average cost per qualified lead for roofing clients</div>
+        <div class="result-desc">Average cost per qualified lead across our client base</div>
       </div>
       <div class="result-card">
         <div class="result-num">7 days</div>
@@ -769,7 +772,7 @@ footer p { font-size: 0.78rem; color: var(--muted2); }
           <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/></svg>
         </div>
       </div>
-      <div class="faq-a" role="region">We work exclusively with home service businesses. That means our ad templates, landing pages, and targeting strategies are already built around how homeowners search for roofing, HVAC, and plumbing help — so there's no learning curve on your dime.</div>
+      <div class="faq-a" role="region">We focus exclusively on paid traffic — no SEO, no social media management, no branding. That means every process, template, and optimization we've built is purpose-built for converting ad spend into leads. You're not paying for a generalist to figure it out.</div>
     </div>
 
     <div class="faq-item">
@@ -808,22 +811,27 @@ footer p { font-size: 0.78rem; color: var(--muted2); }
       </div>
     </div>
     <div class="form-card">
-      <form id="leadForm" novalidate>
+      <!-- ACTION: Replace YOUR_FORMSPREE_ID below. Steps:
+           1. Go to https://formspree.io and sign up free
+           2. Create a new form → copy the ID (looks like "xpwzabcd")
+           3. Replace YOUR_FORMSPREE_ID with your ID -->
+      <form id="leadForm" action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST" novalidate>
+        <input type="hidden" name="_subject" value="New strategy call booking — Alabi Agency" />
         <div class="field">
           <label for="businessName">Business name</label>
-          <input type="text" id="businessName" required placeholder="e.g. Summit Roofing Co." autocomplete="organization"/>
+          <input type="text" id="businessName" name="businessName" required placeholder="e.g. Acme Corp" autocomplete="organization"/>
         </div>
         <div class="field">
           <label for="email">Email address</label>
-          <input type="email" id="email" required placeholder="you@company.com" autocomplete="email"/>
+          <input type="email" id="email" name="email" required placeholder="you@company.com" autocomplete="email"/>
         </div>
         <div class="field">
           <label for="businessUrl">Business website</label>
-          <input type="text" id="businessUrl" placeholder="www.yourbusiness.com" autocomplete="url"/>
+          <input type="text" id="businessUrl" name="businessUrl" placeholder="www.yourbusiness.com" autocomplete="url"/>
         </div>
         <div class="field">
           <label for="adSpend">Current monthly ad spend</label>
-          <select id="adSpend" required>
+          <select id="adSpend" name="adSpend" required>
             <option value="" disabled selected>Select a range</option>
             <option value="Under $1.5K">Under $1.5K</option>
             <option value="$1.5K-$5K">$1.5K–$5K</option>
@@ -840,7 +848,10 @@ footer p { font-size: 0.78rem; color: var(--muted2); }
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-logo">Alabi<span>.</span> Agency</div>
+  <div class="footer-logo">
+    <!-- LOGO: Replace with <img src="your-logo.png" alt="Alabi Agency" style="height:32px;"> -->
+    Alabi<span>.</span> Agency
+  </div>
   <p>© 2026 Alabi Agency. All rights reserved.</p>
 </footer>
 
@@ -864,23 +875,50 @@ footer p { font-size: 0.78rem; color: var(--muted2); }
     });
   });
 
-  // Lead form
-  const leads = [];
-  document.getElementById('leadForm').addEventListener('submit', function(e) {
+  // Lead form — submits to Formspree, falls back to console if ID not set
+  document.getElementById('leadForm').addEventListener('submit', async function(e) {
     e.preventDefault();
-    const entry = {
-      businessName: document.getElementById('businessName').value,
-      email: document.getElementById('email').value,
-      businessUrl: document.getElementById('businessUrl').value,
-      adSpend: document.getElementById('adSpend').value,
-      submittedAt: new Date().toISOString()
-    };
-    leads.push(entry);
-    console.log('Leads table:', leads);
+    const form = this;
     const status = document.getElementById('formStatus');
-    status.textContent = "Thanks — we'll be in touch within 24 hours to schedule your call.";
-    status.classList.add('success');
-    this.reset();
+    const btn = form.querySelector('.submit-btn');
+    const action = form.getAttribute('action');
+
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
+    status.textContent = '';
+    status.className = 'form-status';
+
+    if (action.includes('YOUR_FORMSPREE_ID')) {
+      // Dev fallback — log to console until Formspree is wired up
+      console.log('Form data:', Object.fromEntries(new FormData(form)));
+      status.textContent = "Thanks — we'll be in touch within 24 hours to schedule your call.";
+      status.classList.add('success');
+      form.reset();
+      btn.disabled = false;
+      btn.textContent = 'Book a Strategy Call →';
+      return;
+    }
+
+    try {
+      const res = await fetch(action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      });
+      if (res.ok) {
+        status.textContent = "Thanks — we'll be in touch within 24 hours to schedule your call.";
+        status.classList.add('success');
+        form.reset();
+      } else {
+        status.textContent = "Something went wrong. Please email us directly.";
+        status.style.color = '#f87171';
+      }
+    } catch {
+      status.textContent = "Something went wrong. Please try again.";
+      status.style.color = '#f87171';
+    }
+    btn.disabled = false;
+    btn.textContent = 'Book a Strategy Call →';
   });
 </script>
 
