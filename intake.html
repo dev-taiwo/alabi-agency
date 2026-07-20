@@ -195,7 +195,7 @@ footer p { font-size: 0.78rem; color: var(--muted2); }
 
 <div class="form-wrap">
   <div class="form-card">
-    <form id="intakeForm" action="https://formsubmit.co/ajax/alabiagency.dev@gmail.com" method="POST" novalidate>
+    <form id="intakeForm" action="https://formsubmit.co/ajax/alabiagency.dev@gmail.com" method="POST" enctype="multipart/form-data" novalidate>
       <input type="hidden" name="_subject" value="New client intake — Alabi Agency" />
       <input type="hidden" name="_template" value="table" />
       <input type="hidden" name="_captcha" value="false" />
@@ -257,7 +257,16 @@ footer p { font-size: 0.78rem; color: var(--muted2); }
               <label class="radio-pill"><input type="radio" name="hasLogo" value="Yes, will send"/><span>Yes, will send</span></label>
               <label class="radio-pill"><input type="radio" name="hasLogo" value="No, need one made"/><span>No, need one made</span></label>
             </div>
-            <span class="hint">Email your logo file separately after submitting — this form doesn't accept attachments.</span>
+          </div>
+          <div class="field">
+            <label for="attachment">Upload logo &amp; a few key photos</label>
+            <input type="file" id="attachment" name="attachment" accept="image/*,.pdf,.svg" multiple/>
+            <span class="hint">Up to ~10MB total. For larger photo sets, paste a link below instead.</span>
+          </div>
+          <div class="field">
+            <label for="photoLink">Link to full photo folder (Google Drive, Dropbox, etc.)</label>
+            <input type="text" id="photoLink" name="photoLink" placeholder="Paste a shareable link"/>
+            <span class="hint">Best for big batches of job-site photos — make sure the link is set to "anyone with the link can view."</span>
           </div>
           <div class="field">
             <label for="brandColors">Preferred brand colors</label>
