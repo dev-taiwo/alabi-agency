@@ -195,10 +195,13 @@ footer p { font-size: 0.78rem; color: var(--muted2); }
 
 <div class="form-wrap">
   <div class="form-card">
-    <form id="intakeForm" action="https://formsubmit.co/ajax/alabiagency.dev@gmail.com" method="POST" enctype="multipart/form-data" novalidate>
+    <!-- Regular POST (not AJAX) — required for file attachments to be delivered.
+         After submitting, FormSubmit redirects the visitor to thanks.html via _next. -->
+    <form id="intakeForm" action="https://formsubmit.co/alabiagency.dev@gmail.com" method="POST" enctype="multipart/form-data">
       <input type="hidden" name="_subject" value="New client intake — Alabi Agency" />
       <input type="hidden" name="_template" value="table" />
       <input type="hidden" name="_captcha" value="false" />
+      <input type="hidden" name="_next" value="https://dev-taiwo.github.io/alabi-agency/thanks.html" />
       <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true" />
 
       <fieldset>
@@ -373,37 +376,12 @@ footer p { font-size: 0.78rem; color: var(--muted2); }
 </footer>
 
 <script>
-document.getElementById('intakeForm').addEventListener('submit', async function(e) {
-  e.preventDefault();
-  const form = this;
-  const status = document.getElementById('formStatus');
-  const btn = form.querySelector('.submit-btn');
+// Native POST so file attachments are delivered (AJAX endpoint drops them).
+// FormSubmit redirects to thanks.html via the _next hidden field.
+document.getElementById('intakeForm').addEventListener('submit', function() {
+  const btn = this.querySelector('.submit-btn');
   btn.disabled = true;
   btn.textContent = 'Sending…';
-  status.textContent = '';
-  status.className = 'form-status';
-
-  try {
-    const res = await fetch(form.getAttribute('action'), {
-      method: 'POST',
-      body: new FormData(form),
-      headers: { 'Accept': 'application/json' }
-    });
-    if (res.ok) {
-      status.textContent = "Thanks — we've got it. We'll follow up within 24 hours.";
-      status.classList.add('success');
-      form.reset();
-      btn.textContent = 'Submitted ✓';
-      return;
-    }
-    status.textContent = 'Something went wrong. Please email us directly at alabiagency.dev@gmail.com.';
-    status.style.color = '#f87171';
-  } catch {
-    status.textContent = 'Something went wrong. Please try again.';
-    status.style.color = '#f87171';
-  }
-  btn.disabled = false;
-  btn.textContent = 'Submit Intake';
 });
 </script>
 

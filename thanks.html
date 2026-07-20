@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Thank You — Alabi Agency</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #080B12;
+  --em: #10B981;
+  --em-bright: #34D399;
+  --em-dim: rgba(16,185,129,0.10);
+  --em-border: rgba(16,185,129,0.25);
+  --em-glow: rgba(16,185,129,0.15);
+  --white: #F0F2F5;
+  --muted: #8892A0;
+  --border: rgba(255,255,255,0.07);
+  --radius-sm: 8px;
+}
+body {
+  background: var(--bg);
+  color: var(--white);
+  font-family: 'Inter', sans-serif;
+  min-height: 100vh;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  text-align: center;
+  padding: 2rem 1.5rem;
+}
+.check-circle {
+  width: 72px; height: 72px; border-radius: 50%;
+  background: var(--em-dim); border: 1px solid var(--em-border);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--em-bright);
+  margin-bottom: 1.75rem;
+  box-shadow: 0 0 40px var(--em-glow);
+}
+h1 {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(1.8rem, 5vw, 2.6rem);
+  font-weight: 800; letter-spacing: -0.025em;
+  margin-bottom: 1rem;
+}
+p { color: var(--muted); max-width: 460px; line-height: 1.7; margin-bottom: 2.25rem; }
+a.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  font-family: 'Poppins', sans-serif;
+  background: var(--em); color: #fff; text-decoration: none;
+  font-weight: 600; font-size: 0.95rem;
+  padding: 0.85rem 2rem; border-radius: var(--radius-sm);
+  transition: background 0.2s, transform 0.2s;
+  box-shadow: 0 0 20px var(--em-glow);
+}
+a.btn:hover { background: var(--em-bright); transform: translateY(-1px); }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; } }
+</style>
+</head>
+<body>
+<div class="check-circle">
+  <svg width="34" height="34" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+</div>
+<h1>Got it — thank you!</h1>
+<p>Your submission is in. We'll review everything and follow up within 24 hours. If you have photos or files you couldn't attach, just reply to our email with a link.</p>
+<a class="btn" href="index.html">← Back to site</a>
+</body>
+</html>
