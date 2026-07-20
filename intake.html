@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Project Intake — Alabi Agency</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #080B12;
+  --surface: #0F1219;
+  --card: #141820;
+  --em: #10B981;
+  --em-bright: #34D399;
+  --em-dim: rgba(16,185,129,0.10);
+  --em-border: rgba(16,185,129,0.25);
+  --em-glow: rgba(16,185,129,0.15);
+  --white: #F0F2F5;
+  --muted: #8892A0;
+  --muted2: #5A6270;
+  --border: rgba(255,255,255,0.07);
+  --border2: rgba(255,255,255,0.04);
+  --radius: 14px;
+  --radius-sm: 8px;
+}
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--white);
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+}
+.em { color: var(--em-bright); }
+.section-label {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--em); font-weight: 600; font-family: 'Poppins', sans-serif;
+  margin-bottom: 1.1rem;
+}
+.section-label::before {
+  content: '';
+  display: block; width: 18px; height: 2px;
+  background: var(--em); border-radius: 2px;
+}
+h2 {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(1.9rem, 3.5vw, 2.6rem);
+  font-weight: 800; letter-spacing: -0.025em;
+  line-height: 1.12;
+}
+h3 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--em-bright);
+  letter-spacing: -0.01em;
+}
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1rem 2.5rem;
+  background: rgba(8,11,18,0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+}
+.logo-mark { display: flex; align-items: center; }
+a.back-link {
+  font-size: 0.875rem; font-weight: 500; color: var(--muted);
+  text-decoration: none; transition: color 0.2s;
+}
+a.back-link:hover { color: var(--em-bright); }
+.page-header {
+  padding: 8.5rem 2.5rem 3rem;
+  max-width: 780px; margin: 0 auto;
+  text-align: center;
+}
+.page-header p {
+  color: var(--muted); font-size: 1rem; line-height: 1.7;
+  max-width: 560px; margin: 1rem auto 0;
+}
+.form-wrap { max-width: 700px; margin: 0 auto; padding: 0 2.5rem 6rem; }
+.form-card {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 2.5rem;
+}
+fieldset {
+  border: none; padding: 0; margin: 0 0 2.5rem;
+}
+fieldset:last-of-type { margin-bottom: 0; }
+legend {
+  display: flex; align-items: center; gap: 0.75rem;
+  width: 100%; margin-bottom: 1.5rem; padding-bottom: 0.9rem;
+  border-bottom: 1px solid var(--border);
+}
+.legend-num {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em;
+  color: var(--em); background: var(--em-dim);
+  border: 1px solid var(--em-border); border-radius: 6px;
+  padding: 0.3rem 0.55rem; flex-shrink: 0;
+}
+.field-group { display: flex; flex-direction: column; gap: 1.1rem; }
+.field { display: flex; flex-direction: column; gap: 0.45rem; }
+label { font-size: 0.85rem; font-weight: 600; color: var(--white); letter-spacing: 0.01em; }
+.hint { font-size: 0.78rem; color: var(--muted2); font-weight: 400; margin-top: -0.15rem; }
+input, select, textarea {
+  width: 100%; background: var(--surface);
+  border: 1px solid var(--border); border-radius: var(--radius-sm);
+  padding: 0.85rem 1rem; color: var(--white);
+  font-family: 'Inter', sans-serif; font-size: 0.95rem;
+  transition: border-color 0.2s;
+}
+textarea { resize: vertical; min-height: 5.5rem; font-family: 'Inter', sans-serif; }
+input::placeholder, textarea::placeholder { color: var(--muted2); }
+input:focus, select:focus, textarea:focus { outline: none; border-color: var(--em); }
+select { appearance: none; cursor: pointer; color: var(--white); }
+select option { background: var(--card); color: var(--white); }
+.radio-row, .check-row {
+  display: flex; flex-wrap: wrap; gap: 0.6rem;
+}
+.radio-pill {
+  position: relative;
+}
+.radio-pill input { position: absolute; opacity: 0; width: 0; height: 0; }
+.radio-pill span {
+  display: inline-flex; align-items: center;
+  padding: 0.55rem 1rem; border-radius: 100px;
+  border: 1px solid var(--border); background: var(--surface);
+  font-size: 0.85rem; color: var(--muted); cursor: pointer;
+  transition: all 0.15s; user-select: none;
+}
+.radio-pill input:checked + span {
+  border-color: var(--em-border); background: var(--em-dim); color: var(--em-bright);
+}
+.radio-pill input:focus-visible + span { outline: 2px solid var(--em); outline-offset: 2px; }
+.submit-btn {
+  width: 100%;
+  background: var(--em); color: #fff;
+  font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 1rem;
+  padding: 1rem; border: none; border-radius: var(--radius-sm);
+  cursor: pointer; margin-top: 2.5rem;
+  transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 0 20px var(--em-glow);
+}
+.submit-btn:hover {
+  background: var(--em-bright);
+  transform: translateY(-1px);
+  box-shadow: 0 0 30px rgba(16,185,129,0.3);
+}
+.submit-btn:disabled { opacity: 0.6; cursor: default; transform: none; }
+.form-status {
+  text-align: center; font-size: 0.88rem;
+  margin-top: 1rem; min-height: 1.2rem;
+}
+.form-status.success { color: var(--em-bright); }
+footer {
+  padding: 2.5rem 2.5rem;
+  border-top: 1px solid var(--border);
+  text-align: center;
+}
+footer p { font-size: 0.78rem; color: var(--muted2); }
+@media (max-width: 600px) {
+  .page-header { padding: 7rem 1.25rem 2.5rem; }
+  .form-wrap { padding: 0 1.25rem 4rem; }
+  .form-card { padding: 1.75rem 1.25rem; }
+  nav { padding: 0.9rem 1.25rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition: none !important; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo-mark">
+    <svg width="140" height="41" viewBox="0 0 164 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Alabi Agency">
+      <path d="M24 2 L4 24 L15 24 L8 46 L19 46 L24 26 Z" fill="#3EE6A4"/>
+      <path d="M24 2 L44 24 L33 24 L40 46 L29 46 L24 26 Z" fill="#0FA36B"/>
+      <text x="52" y="24" font-family="Poppins,Arial,sans-serif" font-weight="800" font-size="17" letter-spacing="-0.5" fill="#34D399">Alabi</text>
+      <text x="52" y="41" font-family="Poppins,Arial,sans-serif" font-weight="800" font-size="17" letter-spacing="-0.5" fill="#34D399">Agency</text>
+    </svg>
+  </div>
+  <a class="back-link" href="index.html">← Back to site</a>
+</nav>
+
+<div class="page-header">
+  <div class="section-label" style="justify-content:center;">Project Intake</div>
+  <h2>Let's get your project started</h2>
+  <p>Fill out the details below so we can get your site into design. The more complete this is, the faster your first draft comes together.</p>
+</div>
+
+<div class="form-wrap">
+  <div class="form-card">
+    <form id="intakeForm" action="https://formsubmit.co/ajax/alabiagency.dev@gmail.com" method="POST" novalidate>
+      <input type="hidden" name="_subject" value="New client intake — Alabi Agency" />
+      <input type="hidden" name="_template" value="table" />
+      <input type="hidden" name="_captcha" value="false" />
+      <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true" />
+
+      <fieldset>
+        <legend><span class="legend-num">01</span><h3>Goals</h3></legend>
+        <div class="field-group">
+          <div class="field">
+            <label for="mainGoal">Main goal of the site</label>
+            <select id="mainGoal" name="mainGoal" required>
+              <option value="" disabled selected>Select one</option>
+              <option value="More calls">More calls</option>
+              <option value="More leads/quotes">More leads/quotes</option>
+              <option value="Online booking">Online booking</option>
+              <option value="Credibility/portfolio">Credibility/portfolio</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="priorityServices">Services to highlight most</label>
+            <input type="text" id="priorityServices" name="priorityServices" placeholder="e.g. emergency roof repair, storm damage"/>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend><span class="legend-num">02</span><h3>Domain &amp; Hosting</h3></legend>
+        <div class="field-group">
+          <div class="field">
+            <label for="domain">Domain (if you already own one)</label>
+            <input type="text" id="domain" name="domain" placeholder="www.yourbusiness.com"/>
+          </div>
+          <div class="field">
+            <label for="registrar">Registered with</label>
+            <input type="text" id="registrar" name="registrar" placeholder="GoDaddy, Namecheap, etc."/>
+          </div>
+          <div class="field">
+            <label>Can you share access or add us as a collaborator?</label>
+            <div class="radio-row">
+              <label class="radio-pill"><input type="radio" name="domainAccess" value="Yes"/><span>Yes</span></label>
+              <label class="radio-pill"><input type="radio" name="domainAccess" value="No"/><span>No</span></label>
+              <label class="radio-pill"><input type="radio" name="domainAccess" value="Need a domain"/><span>I need a domain</span></label>
+            </div>
+          </div>
+          <div class="field">
+            <label for="domainPref">Domain name preferences (if you need one)</label>
+            <input type="text" id="domainPref" name="domainPref"/>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend><span class="legend-num">03</span><h3>Brand Assets</h3></legend>
+        <div class="field-group">
+          <div class="field">
+            <label>Logo file available?</label>
+            <div class="radio-row">
+              <label class="radio-pill"><input type="radio" name="hasLogo" value="Yes, will send"/><span>Yes, will send</span></label>
+              <label class="radio-pill"><input type="radio" name="hasLogo" value="No, need one made"/><span>No, need one made</span></label>
+            </div>
+            <span class="hint">Email your logo file separately after submitting — this form doesn't accept attachments.</span>
+          </div>
+          <div class="field">
+            <label for="brandColors">Preferred brand colors</label>
+            <input type="text" id="brandColors" name="brandColors" placeholder="Hex codes if known, or just describe"/>
+          </div>
+          <div class="field">
+            <label>Photos of work/team/shop available?</label>
+            <div class="radio-row">
+              <label class="radio-pill"><input type="radio" name="hasPhotos" value="Yes"/><span>Yes</span></label>
+              <label class="radio-pill"><input type="radio" name="hasPhotos" value="No"/><span>No</span></label>
+            </div>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend><span class="legend-num">04</span><h3>Business Info</h3></legend>
+        <div class="field-group">
+          <div class="field">
+            <label for="businessName">Business name (exactly as displayed)</label>
+            <input type="text" id="businessName" name="businessName" required/>
+          </div>
+          <div class="field">
+            <label for="phone">Phone number</label>
+            <input type="tel" id="phone" name="phone" required/>
+          </div>
+          <div class="field">
+            <label for="email">Email address</label>
+            <input type="email" id="email" name="email" required/>
+          </div>
+          <div class="field">
+            <label for="address">Physical address (if applicable)</label>
+            <input type="text" id="address" name="address"/>
+          </div>
+          <div class="field">
+            <label for="hours">Hours of operation</label>
+            <input type="text" id="hours" name="hours" placeholder="Mon–Fri 8am–6pm"/>
+          </div>
+          <div class="field">
+            <label for="services">Full list of services offered</label>
+            <textarea id="services" name="services" placeholder="One per line is fine"></textarea>
+          </div>
+          <div class="field">
+            <label for="pricing">Pricing you're comfortable displaying publicly</label>
+            <textarea id="pricing" name="pricing"></textarea>
+          </div>
+          <div class="field">
+            <label for="serviceArea">Service area (cities/radius covered)</label>
+            <input type="text" id="serviceArea" name="serviceArea"/>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend><span class="legend-num">05</span><h3>Social Proof</h3></legend>
+        <div class="field-group">
+          <div class="field">
+            <label for="gbp">Google Business Profile link</label>
+            <input type="text" id="gbp" name="gbp"/>
+          </div>
+          <div class="field">
+            <label for="testimonials">Testimonials/reviews to feature</label>
+            <textarea id="testimonials" name="testimonials"></textarea>
+          </div>
+          <div class="field">
+            <label for="socials">Social media links</label>
+            <input type="text" id="socials" name="socials" placeholder="Instagram, Facebook, etc."/>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend><span class="legend-num">06</span><h3>Extras</h3></legend>
+        <div class="field-group">
+          <div class="field">
+            <label>Want a booking/scheduling tool?</label>
+            <div class="radio-row">
+              <label class="radio-pill"><input type="radio" name="wantsBooking" value="Yes"/><span>Yes</span></label>
+              <label class="radio-pill"><input type="radio" name="wantsBooking" value="No"/><span>No</span></label>
+            </div>
+          </div>
+          <div class="field">
+            <label>Want live chat or a contact form?</label>
+            <div class="radio-row">
+              <label class="radio-pill"><input type="radio" name="wantsChat" value="Yes"/><span>Yes</span></label>
+              <label class="radio-pill"><input type="radio" name="wantsChat" value="No"/><span>No</span></label>
+            </div>
+          </div>
+          <div class="field">
+            <label for="competitors">Competitor sites you like the look of</label>
+            <textarea id="competitors" name="competitors" placeholder="Links or names"></textarea>
+          </div>
+        </div>
+      </fieldset>
+
+      <button type="submit" class="submit-btn">Submit Intake</button>
+      <div class="form-status" id="formStatus" role="status" aria-live="polite"></div>
+    </form>
+  </div>
+</div>
+
+<footer>
+  <p>© 2026 Alabi Agency. All rights reserved.</p>
+</footer>
+
+<script>
+document.getElementById('intakeForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const form = this;
+  const status = document.getElementById('formStatus');
+  const btn = form.querySelector('.submit-btn');
+  btn.disabled = true;
+  btn.textContent = 'Sending…';
+  status.textContent = '';
+  status.className = 'form-status';
+
+  try {
+    const res = await fetch(form.getAttribute('action'), {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    });
+    if (res.ok) {
+      status.textContent = "Thanks — we've got it. We'll follow up within 24 hours.";
+      status.classList.add('success');
+      form.reset();
+      btn.textContent = 'Submitted ✓';
+      return;
+    }
+    status.textContent = 'Something went wrong. Please email us directly at alabiagency.dev@gmail.com.';
+    status.style.color = '#f87171';
+  } catch {
+    status.textContent = 'Something went wrong. Please try again.';
+    status.style.color = '#f87171';
+  }
+  btn.disabled = false;
+  btn.textContent = 'Submit Intake';
+});
+</script>
+
+</body>
+</html>
